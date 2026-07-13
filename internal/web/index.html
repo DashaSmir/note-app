@@ -1,0 +1,13 @@
+{{define "title"}}Мои заметки{{end}}
+{{define "main"}}
+    <h1>Список заметок</h1>
+    {{range .Notes}}
+        <div>
+            <a href="/note/view/{{.ID}}">{{.Title}}</a>
+            <small>{{.Created.Format "02.01.2006 15:04"}}</small>
+        </div>
+    {{else}}
+        <p>Пока нет заметок.</p>
+    {{end}}
+    <a href="/note/create">Создать заметку</a>
+{{end}}
