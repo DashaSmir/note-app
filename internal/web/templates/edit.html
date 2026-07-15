@@ -2,17 +2,17 @@
 {{define "main"}}
     <h1>Редактировать заметку</h1>
     <form action="/note/edit/{{.ID}}" method="POST">
-        <div>
-            <label>Заголовок:</label><br>
-            <input type="text" name="title" value="{{.Title}}" required>
+        <div style="margin-bottom:15px;">
+            <label for="title" style="display:block; font-weight:600; margin-bottom:4px;">Заголовок</label>
+            <input type="text" name="title" id="title" value="{{.Title}}" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1rem;">
         </div>
-        <div>
-            <label>Содержание:</label><br>
-            <textarea name="content" rows="5" cols="40" required>{{.Content}}</textarea>
+        <div style="margin-bottom:20px;">
+            <label for="content" style="display:block; font-weight:600; margin-bottom:4px;">Содержание</label>
+            <textarea name="content" id="content" rows="6" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1rem; resize:vertical;">{{.Content}}</textarea>
         </div>
-        <br>
-        <button type="submit">Обновить</button>
+        <div class="actions">
+            <button type="submit" class="btn btn-success">Обновить</button>
+            <a href="/note/view/{{.ID}}" class="btn btn-outline">Отмена</a>
+        </div>
     </form>
-    <br>
-    <a href="/note/view/{{.ID}}">Отмена</a>
 {{end}}

@@ -8,6 +8,7 @@ import (
     "os"
     "path/filepath"
     "strconv"
+    "mime"
     "github.com/go-chi/chi/v5"
     _ "modernc.org/sqlite"
     "github.com/DashaSmir/note-app/internal/models"
@@ -26,6 +27,8 @@ type application struct {
 }
 
 func main() {
+    mime.AddExtensionType(".css", "text/css")
+
     cfg := Config{
         Port: getEnv("PORT", "8080"),
         DSN:  getEnv("DSN", "./notes.db"),

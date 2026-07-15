@@ -1,13 +1,30 @@
 {{define "title"}}Мои заметки{{end}}
 {{define "main"}}
-    <h1>Список заметок</h1>
-    {{range .Notes}}
-        <div>
-            <a href="/note/view/{{.ID}}">{{.Title}}</a>
-            <small>{{.Created.Format "02.01.2006 15:04"}}</small>
-        </div>
+    <h1>Мои заметки</h1>
+
+    {{if .Notes}}
+        <ul class="note-list">
+        {{range .Notes}}
+            <li class="note-item">
+                <span class="note-title">
+                    <a href="/note/view/{{.ID}}">{{.Title}}</a>
+                </span>
+                <span class="note-date">{{.Created.Format "02.01.2006 15:04"}}</span>
+                <div>
+                    <a href="/note/view/{{.ID}}" class="btn btn-outline">Просмотр</a>
+                    <a href="/note/edit/{{.ID}}" class="btn">Редактировать</a>
+                    <form action="/note/delete/{{.ID}}" method="POST" class="inline-form">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Удалить заметку?')">Удалить</button>
+                    </form>
+                </div>
+            </li>
+        {{end}}
+        </ul>
     {{else}}
-        <p>Пока нет заметок.</p>
+        <p style="text-align:center; color:#888; margin:30px 0;">Пока нет заметок. Создайте первую!</p>
     {{end}}
-    <a href="/note/create">Создать заметку</a>
+
+    <div class="actions">
+        <a href="/note/create" class="btn btn-success">Создать заметку</a>
+    </div>
 {{end}}

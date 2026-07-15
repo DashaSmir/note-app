@@ -2,6 +2,7 @@ package main
 
 import (
     "net/http"
+
     "github.com/go-chi/chi/v5"
     "github.com/go-chi/chi/v5/middleware"
 )
@@ -9,8 +10,8 @@ import (
 func (app *application) routes(r *chi.Mux) {
     r.Use(middleware.Logger)
     r.Use(app.recoverPanic)
-
-    fileServer := http.FileServer(http.Dir("./internal/web"))
+    
+    fileServer := http.FileServer(http.Dir("./internal/web/css"))
     r.Handle("/css/*", http.StripPrefix("/css", fileServer))
 
     r.Get("/", app.home)

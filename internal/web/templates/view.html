@@ -1,13 +1,14 @@
 {{define "title"}}Заметка #{{.ID}}{{end}}
 {{define "main"}}
     <h1>{{.Title}}</h1>
-    <p>{{.Content}}</p>
-    <small>Создано: {{.Created.Format "02.01.2006 15:04"}}</small>
-    <br><br>
-    <a href="/note/edit/{{.ID}}">Редактировать</a>
-    <form action="/note/delete/{{.ID}}" method="POST" style="display:inline;">
-        <button type="submit" onclick="return confirm('Удалить заметку?')">Удалить</button>
-    </form>
-    <br><br>
-    <a href="/">Назад к списку</a>
+    <p style="font-size:1rem; line-height:1.6; margin:20px 0;">{{.Content}}</p>
+    <p style="color:#888; font-size:0.9rem;">Создано: {{.Created.Format "02.01.2006 15:04"}}</p>
+
+    <div class="actions" style="margin-top:30px;">
+        <a href="/note/edit/{{.ID}}" class="btn">Редактировать</a>
+        <form action="/note/delete/{{.ID}}" method="POST" class="inline-form">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Удалить заметку?')">Удалить</button>
+        </form>
+        <a href="/" class="btn btn-outline">Назад</a>
+    </div>
 {{end}}
