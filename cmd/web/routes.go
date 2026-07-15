@@ -10,8 +10,8 @@ func (app *application) routes(r *chi.Mux) {
     r.Use(middleware.Logger)
     r.Use(app.recoverPanic)
 
-    fileServer := http.FileServer(http.Dir("./internal/web/static"))
-    r.Handle("/static/*", http.StripPrefix("/static", fileServer))
+    fileServer := http.FileServer(http.Dir("./internal/web"))
+    r.Handle("/css/*", http.StripPrefix("/css", fileServer))
 
     r.Get("/", app.home)
     r.Get("/note/view/{id}", app.viewNote)

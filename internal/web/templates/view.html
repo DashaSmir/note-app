@@ -1,0 +1,13 @@
+{{define "title"}}Заметка #{{.ID}}{{end}}
+{{define "main"}}
+    <h1>{{.Title}}</h1>
+    <p>{{.Content}}</p>
+    <small>Создано: {{.Created.Format "02.01.2006 15:04"}}</small>
+    <br><br>
+    <a href="/note/edit/{{.ID}}">Редактировать</a>
+    <form action="/note/delete/{{.ID}}" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('Удалить заметку?')">Удалить</button>
+    </form>
+    <br><br>
+    <a href="/">Назад к списку</a>
+{{end}}

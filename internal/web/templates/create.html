@@ -1,0 +1,18 @@
+{{define "title"}}Создать заметку{{end}}
+{{define "main"}}
+    <h1>Создать заметку</h1>
+    <form action="/note/create" method="POST">
+        <div>
+            <label>Заголовок:</label><br>
+            <input type="text" name="title" required>
+        </div>
+        <div>
+            <label>Содержание:</label><br>
+            <textarea name="content" rows="5" cols="40" required></textarea>
+        </div>
+        <br>
+        <button type="submit">Сохранить</button>
+    </form>
+    <br>
+    <a href="/">Отмена</a>
+{{end}}
